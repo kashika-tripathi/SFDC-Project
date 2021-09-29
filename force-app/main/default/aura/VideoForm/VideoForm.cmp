@@ -1,0 +1,9 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+
+    <aura:registerEvent name="videoFormSubmit" type="c:VideoFormSubmit"/>
+
+    <div class="slds-align_absolute-center">
+        <lightning:input type="url" label="Required URL field" name="input" required="true" />
+        <lightning:button variant="brand" label="Click me" title="Brand action" onclick="{! c.handleClick }" />
+    </div>
+</aura:component>

@@ -1,0 +1,8 @@
+
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes">
+  
+        <c:VideoForm />
+        <c:VideoTiles/>
+ 
+
+</aura:component>	
