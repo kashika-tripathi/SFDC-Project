@@ -4,6 +4,7 @@
 
     <div class="slds-align_absolute-center">
         <lightning:input type="url" label="Required URL field" name="input" required="true" />
-        <lightning:button variant="brand" label="Click me" title="Brand action" onclick="{! c.handleClick }" />
+        <lightning:button variant="brand" label="Click me" title="Brand action" onclick="{!c.handleClick }" />
     </div>
 </aura:component>
+

@@ -1,3 +1,4 @@
 <aura:event type="APPLICATION" description="Event template">
-    <aura:attribute type="String" name="videoTypeId"/>
+    <aura:attribute type="url" name="videoTypeId"/>
 </aura:event>
+
