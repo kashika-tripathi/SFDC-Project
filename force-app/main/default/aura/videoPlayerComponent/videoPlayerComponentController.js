@@ -8,6 +8,6 @@
         cmp.set("v.videoUrl", getUrl);
     },
     handleHideVideo : function(cmp, event) {
-        cmp.set("v.render", false);
+        cmp.set("v.renderVideo", false);
     }
 })
