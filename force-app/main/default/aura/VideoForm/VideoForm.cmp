@@ -1,10 +1,10 @@
-<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
-
-    <aura:registerEvent name="videoFormSubmit" type="c:VideoFormSubmit"/>
-
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:registerEvent name="displayVideo" type="c:displayVideo"/>
+    <aura:registerEvent name="enterUrl" type="c:videoSearchFormSubmit"/>
     <div class="slds-align_absolute-center">
-        <lightning:input type="url" label="Required URL field" name="input" required="true" />
-        <lightning:button variant="brand" label="Click me" title="Brand action" onclick="{!c.handleClick }" />
+        <lightning:input aura:id="urlInput" type="url" label="Required URL field" name="input" required="true" />
+        <lightning:button variant="brand" label="Click me" title="Brand action" onclick="{!c.handleUrlClick }" />
     </div>
+	<lightning:button variant="brand" label="show Video" title="Display Video" onclick="{! c.fireDisplayVideoEvent }" />
+    <c:videoPlayerComponent/>
 </aura:component>
-
