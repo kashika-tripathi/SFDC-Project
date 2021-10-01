@@ -15,6 +15,4 @@
         <p>{!v.videoLink}</p>
     </lightning:card>
 
-</aura:component>	
-
-
+</aura:component>

@@ -1,10 +1,15 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<aura:component controller="VideoFormController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
     
     <aura:attribute name="videoUrl" type="String" default=" "/>
     <lightning:card>
             <iframe width="420" height="315"
 				src="{!v.videoUrl}">
 			</iframe>
-            <c:videoLikeDislike/>
+            <td class="slds-col">
+                <lightning:buttonIconStateful iconName="utility:like"  alternativeText="Like" onclick="{! c.handleLikeToggle }"/>
+            </td>
+            <td class="slds-col">
+                <lightning:buttonIconStateful iconName="utility:dislike"   alternativeText="DisLike" onclick="{! c.handleDisLikeToggle }"/>
+            </td>
     </lightning:card>
 </aura:component>

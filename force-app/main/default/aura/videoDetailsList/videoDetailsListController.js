@@ -1,5 +1,3 @@
-
-
 ({
     handleCreateVideo: function(component, event) {
         var saveVideoAction = component.get("c.createVideo");
