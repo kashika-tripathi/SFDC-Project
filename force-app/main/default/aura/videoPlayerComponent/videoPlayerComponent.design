@@ -1,6 +1,3 @@
 <design:component>
 	<design:attribute name="VideoLink" label="Video Link" default=" "></design:attribute>
 </design:component>
-
-
-

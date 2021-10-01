@@ -1,6 +1,5 @@
 
 
-
 <aura:component access="GLOBAL" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"  controller="VideoFormController"> 
    
     <aura:attribute name="newVideoRecord" type="videoToEmbed__c"
