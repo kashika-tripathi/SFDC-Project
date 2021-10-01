@@ -21,7 +21,7 @@
                 "video": component.get("v.newVideoRecord")
             });
 
-            console.log(video);
+            console.log(saveVideoAction);
         
         // Configure the response handler for the action
         saveVideoAction.setCallback(this, function(response) {
