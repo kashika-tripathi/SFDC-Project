@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-<aura:component>
+<aura:component  implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId">
 
-=======
-<aura:component  >
->>>>>>> origin/master
     <aura:attribute name="newItem" type="videoToEmbed__c" default="{
                                                                    'sobjectType': 'videoToEmbed__c',
                                                                    'video_name__c': 'Demo Video',
@@ -14,7 +10,7 @@
                                                                    }
                                                                    "/>
      <aura:attribute name="items" type="videoToEmbed__c[]"/>
-    <form class="slds-form--stacked">
+    <form class="slds-form-element">
         <lightning:input aura:id="videoform" label="Video Name"
                          name="videoname"
                          value="{!v.newItem.video_name__c}"
@@ -35,7 +31,7 @@
                          name="videodislike"
                          value="{!v.newItem.video_dislike__c}"
                          type="boolean"/>
-       <lightning:button label="Create Details" class="slds-m-top--medium"
+       <lightning:button label="Create Details" class="slds-var-m-top_medium"
                                  variant="brand" onclick="{!c.clickCreateItem}"/>
     </form>
 

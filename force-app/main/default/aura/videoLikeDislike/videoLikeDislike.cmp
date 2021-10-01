@@ -6,4 +6,4 @@
     <td class="slds-col">
         <lightning:buttonIconStateful iconName="utility:dislike"  selected="{!v.liked}" alternativeText="Like" onclick="{! c.handleToggle }"/>
     </td>
-</aura:component>	
+</aura:component>
