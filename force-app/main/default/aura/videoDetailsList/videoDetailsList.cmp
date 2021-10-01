@@ -10,6 +10,7 @@
                 'video_name__c': '',
                 'video_creationDate__c':'',
                 'video_discription__c': '',
+                'video_link__c': '',
                 'video_dislike__c': 1 ,
                 'video_like__c': 2,
                 }" />
@@ -40,7 +41,12 @@
 
                     
                 </lightning:layoutItem> 
+
                 <lightning:layoutItem size="8" padding="around-small">
+                    <lightning:input     aura:id="video"
+                                        label="Video Link"
+                                        type="url"
+                                        value="{!v.newVideoRecord.video_link__c}"/>
                     <lightning:input aura:id="video" label="Likes" type="number" value="{!v.newVideoRecord.video_like__c}"/>
                     <lightning:input aura:id="video" label="Dislikes" type="number" value="{!v.newVideoRecord.video_dislike__c}"/>
                     
