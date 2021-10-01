@@ -1,0 +1,38 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes"  >
+    <p>video form goes here</p>
+    <aura:attribute name="newItem" type="videoToEmbed__c" default="{
+                                                                   'sobjectType': 'videoToEmbed__c',
+                                                                   'video_name__c': 'Demo Video',
+                                                                   'video_creationDate__c': '10-12-2021',        
+                                                                   'video_discription__c': 'This is a demo Video',
+                                                                   'video_like__c': false,
+                                                                   'video_like__c': false,
+                                                                   }
+                                                                   "/>
+     <aura:attribute name="items" type="videoToEmbed__c[]"/>
+    <form class="slds-form--stacked">
+        <lightning:input aura:id="videoform" label="Video Name"
+                         name="videoname"
+                         value="{!v.newItem.video_name__c}"
+                         required="true"/>
+        <lightning:input aura:id="videoform" label="Video Creation Date" type="date"
+                         name="creationdate"
+                         value="{!v.newItem.video_creationDate__c}"
+                         required="true"/>
+        <lightning:input aura:id="videoform" label="Video Discription"
+                         name="videodiscription"
+                         value="{!v.newItem.video_discription__c}"
+                         required="true"/>
+        <lightning:input aura:id="videoform" label="Video Like"
+                         name="videolike"
+                         value="{!v.newItem.video_like__c}"
+                         type="boolean"/>
+        <lightning:input aura:id="videoform" label="Video Dislike"
+                         name="videodislike"
+                         value="{!v.newItem.video_dislike__c}"
+                         type="boolean"/>
+       <lightning:button label="Create Details" class="slds-m-top--medium"
+                                 variant="brand" onclick="{!c.clickCreateItem}"/>
+    </form>
+
+</aura:component>
