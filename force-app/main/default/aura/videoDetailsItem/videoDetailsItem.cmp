@@ -1,0 +1,18 @@
+<aura:component >
+    <aura:attribute name="item" type="videoToEmbed__c"/>
+    <p>Video Name
+        <ui:outputText value="{!v.item.video_name__c}"/>
+    </p>
+    <p>:Creation Date
+        <ui:outputDate value="{!v.video_creationDate__c}"/>
+    </p>
+    <p>Description
+        <ui:outputText value="{!v.item.video_discription__c}"/>
+    </p>
+    <p>Like
+        <ui:outputCheckbox value="{!v.item.video_like__c}"/>
+    </p>
+    <p>Dislike
+        <ui:outputCheckbox value="{!v.item.video_dislike__c}"/>
+    </p>
+</aura:component>
