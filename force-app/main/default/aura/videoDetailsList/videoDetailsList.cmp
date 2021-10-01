@@ -1,44 +1,4 @@
-<!-- <aura:component  controller="VideoFormController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId">
 
-    <aura:attribute name="newItem" type="videoToEmbed__c" default="{
-                                                                   'sobjectType': 'videoToEmbed__c',
-                                                                   'video_name__c': 'Demo Video',
-                                                                   'video_creationDate__c': '10-12-2021',        
-                                                                   'video_discription__c': 'This is a demo Video',
-                                                                   'video_like__c': false,
-                                                                   'video_like__c': false,
-                                                                   }
-                                                                   "/>
-     <aura:attribute name="items" type="videoToEmbed__c[]"/>
-     <aura:attribute name="message" type="String" default=""/>
-
-    
-        <lightning:input aura:id="videoform" label="Video Name"
-                         name="videoname"
-                         value="{!v.newItem.video_name__c}"
-                         required="true"/>
-        <lightning:input aura:id="videoform" label="Video Creation Date" type="date"
-                         name="creationdate"
-                         value="{!v.newItem.video_creationDate__c}"
-                         required="true"/>
-        <lightning:input aura:id="videoform" label="Video Discription"
-                         name="videodiscription"
-                         value="{!v.newItem.video_discription__c}"
-                         required="true"/>
-        <lightning:input aura:id="videoform" label="Video Like"
-                         name="videolike"
-                         value="{!v.newItem.video_like__c}"
-                         type="boolean"/>
-        <lightning:input aura:id="videoform" label="Video Dislike"
-                         name="videodislike"
-                         value="{!v.newItem.video_dislike__c}"
-                         type="boolean"/>
-       <lightning:button label="Create Details" 
-                                 variant="brand" onclick="{!c.clickCreateItem}"/>
-                                 <p>{!v.message}</p>
-    </form>
-
-</aura:component> -->
 
 
 <aura:component access="GLOBAL" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"  controller="VideoFormController"> 
@@ -46,11 +6,12 @@
     <aura:attribute name="newVideoRecord" type="videoToEmbed__c"
             default="{
                 'sobjectType': 'videoToEmbed__c',
+                'Name':'',
                 'video_name__c': '',
-                'video_creationDate__c': '',        
+                'video_creationDate__c':'',
                 'video_discription__c': '',
-                'video_like__c': false ,
-                'video_like__c': false,
+                'video_dislike__c': 1 ,
+                'video_like__c': 2,
                 }" />
 
     <aura:attribute name="message" type="String" default=""/>
@@ -60,8 +21,12 @@
             <lightning:layout>
                 <lightning:layoutItem size="4" padding="around-small">
                     <lightning:input     aura:id="video"
+                                        label=" Name"
+                                        type="text"
+                                        value="{!v.newVideoRecord.Name}"/>
+                    <lightning:input     aura:id="video"
                                          label="Video Name"
-                                         type="String"
+                                         type="text"
                                          value="{!v.newVideoRecord.video_name__c}"/>
                     <lightning:input     aura:id="video"
                                          label="Video Created"
@@ -76,8 +41,8 @@
                     
                 </lightning:layoutItem> 
                 <lightning:layoutItem size="8" padding="around-small">
-                    <lightning:input aura:id="video" label="Likes" type="boolean" value="{!v.newVideoRecord.video_like__c}"/>
-                    <lightning:input aura:id="video" label="Dislikes" type="boolean" value="{!v.newVideoRecord.video_like__c}"/>
+                    <lightning:input aura:id="video" label="Likes" type="number" value="{!v.newVideoRecord.video_like__c}"/>
+                    <lightning:input aura:id="video" label="Dislikes" type="number" value="{!v.newVideoRecord.video_dislike__c}"/>
                     
                     <lightning:button label="Create Video" onclick="{!c.handleCreateVideo}" variant="brand" class="slds-m-top_medium"/>
                 </lightning:layoutItem>
