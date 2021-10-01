@@ -1,0 +1,4 @@
+<design:component >
+    <design:attribute name="videoUrl" label="Select Video you want to embedd" description="Name of the Video" 
+                      datasource="apex://videoToEmbedController"/>
+</design:component>

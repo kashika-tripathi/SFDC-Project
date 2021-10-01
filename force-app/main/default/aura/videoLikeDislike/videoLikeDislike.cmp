@@ -1,0 +1,9 @@
+<aura:component>
+    <aura:attribute name="liked" type="Boolean" default="true"/>
+    <td class="slds-col">
+        <lightning:buttonIconStateful iconName="utility:like" selected="{!v.liked}" alternativeText="Like" onclick="{! c.handleToggle }"/>
+    </td>
+    <td class="slds-col">
+        <lightning:buttonIconStateful iconName="utility:dislike"  selected="{!v.liked}" alternativeText="Like" onclick="{! c.handleToggle }"/>
+    </td>
+</aura:component>	

@@ -1,5 +1,9 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes"  >
-    <p>video form goes here</p>
+<<<<<<< HEAD
+<aura:component>
+
+=======
+<aura:component  >
+>>>>>>> origin/master
     <aura:attribute name="newItem" type="videoToEmbed__c" default="{
                                                                    'sobjectType': 'videoToEmbed__c',
                                                                    'video_name__c': 'Demo Video',
