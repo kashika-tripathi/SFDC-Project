@@ -1,15 +1,25 @@
 <aura:component controller="VideoFormController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
-    
+    <ltng:require scripts="{!$Resource.widget_api}"/>
+    <ltng:require scripts="{!$Resource.youTubeApi}" />
+    <aura:attribute name="uId" type="String"/>
     <aura:attribute name="videoUrl" type="String" default=" "/>
+    <aura:attribute name="liked" type="Boolean" default="false"/>
+    <aura:attribute name="disLiked" type="Boolean" default="false"/>
     <lightning:card>
-            <iframe width="420" height="315"
-				src="{!v.videoUrl}">
-			</iframe>
+        <lightning:button variant="brand" label="watch Video" title="watch Video" onclick="{! c.handleVideoWatch }" />
+        <div id="myDiv" aura:id="div1">
+        </div>
+        <aura:if isTrue="{!v.disLiked == false}">
             <td class="slds-col">
-                <lightning:buttonIconStateful iconName="utility:like"  alternativeText="Like" onclick="{! c.handleLikeToggle }"/>
+                <lightning:buttonIconStateful iconName="utility:like"  selected="{!v.liked}" alternativeText="Like" onclick="{! c.handleLikeToggle }"/>
             </td>
+        </aura:if>
+        <aura:if isTrue="{!v.liked == false}">
             <td class="slds-col">
-                <lightning:buttonIconStateful iconName="utility:dislike"   alternativeText="DisLike" onclick="{! c.handleDisLikeToggle }"/>
+                <lightning:buttonIconStateful iconName="utility:dislike" selected="{!v.disLiked}"  alternativeText="DisLike" onclick="{! c.handleDisLikeToggle }"/>
             </td>
+        </aura:if>
+        <lightning:button variant="brand" label="play Video" title="watch Video" onclick="{! c.handlePlayVideo }" />
+        <lightning:button variant="brand" label="pause Video" title="watch Video" onclick="{! c.handlePauseVideo }" />
     </lightning:card>
 </aura:component>

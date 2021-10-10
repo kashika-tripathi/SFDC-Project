@@ -10,7 +10,10 @@
                 'video_link__c': '',
                 'video_dislike__c': 0 ,
                 'video_like__c': 0,
+                'video_category__c':'',
                 }" />
+    <aura:attribute name="categories" type="String[]"
+            default="['sales','developement','strategic']" />
 
     <aura:attribute name="message" type="String" default=""/>
     
@@ -35,7 +38,11 @@
                                          type="text"
                                          value="{!v.newVideoRecord.video_discription__c}"/>
                                          
-
+                    <lightning:select name="Categories" label="Select video category:" aura:id="onjId" value="{!v.newVideoRecord.video_category__c}">
+    					<aura:iteration items="{!v.categories}" var="cat">
+        					<option value="{!cat}" text="{!cat}" />  
+    					</aura:iteration>
+					</lightning:select>
                     
                 </lightning:layoutItem> 
 
@@ -48,7 +55,7 @@
                     <lightning:button label="Create Video" onclick="{!c.handleCreateVideo}" variant="brand" class="slds-m-top_medium"/>
                 </lightning:layoutItem>
             </lightning:layout>
-            <p>{!v.message}</p>
         </div>
     </lightning:card>
+    <c:VideoTiles/>
 </aura:component>

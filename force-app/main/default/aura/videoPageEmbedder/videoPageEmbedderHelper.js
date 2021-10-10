@@ -1,5 +1,4 @@
 ({
-    helperMethod : function() {
-
-    }
+    pla:10,
+    
 })

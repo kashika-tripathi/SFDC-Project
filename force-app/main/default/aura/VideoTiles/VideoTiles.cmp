@@ -1,18 +1,35 @@
-<aura:component>
-    <h1>this is video tile component</h1>
-    <aura:attribute name="videoLink" type="url"/>
-    <aura:handler event="c:VideoFormSubmit" action="{!c.handleChange}"/>
-   
-    <lightning:card>
-        <iframe width="420" height="315"  
-			src="{!v.videoLink}">
-		</iframe>   
-        <!-- <video width="400" controls="controls">
-            <source src="{!v.videoLink}" type="video/mp4"/>
-        </video> -->
-    </lightning:card>
-    <lightning:card>
-        <p>{!v.videoLink}</p>
-    </lightning:card>
-
+<aura:component controller="videoGalleryController">
+    <aura:attribute name="videos" type="videoToEmbed__c[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.initialiseVideos}" />
+    <div class="slds-grid slds-gutters">
+    <aura:iteration items="{!v.videos}" var="video">
+            <div class="slds-col">
+            <lightning:card>
+            <tr >
+                
+        			<iframe width="420" height="315"  
+						src="{!video.video_link__c}">
+					</iframe>   
+   				
+            </tr>
+            <tr >
+                <lightning:recordViewForm recordId="{!video.Id}" objectApiName="videoToEmbed__c" >
+                    <tr  class="slds-row">
+                       <lightning:outputField  fieldName="video_name__c" />
+               	    </tr>
+                    <tr  class="slds-row">
+                       <lightning:outputField  fieldName="video_discription__c" />
+               	    </tr>
+                    <tr  class="slds-row">
+                       <lightning:outputField  fieldName="video_like__c" />
+               	    </tr>
+                    <tr  class="slds-row">
+                       <lightning:outputField  fieldName="video_dislike__c" />
+               	    </tr>
+                </lightning:recordViewForm>
+            </tr>
+                </lightning:card>
+        </div>
+    </aura:iteration>
+        </div>
 </aura:component>

@@ -1,6 +1,28 @@
 public with sharing class VideoFormController {
  
-       
+    @AuraEnabled
+    public static void videoViewUserController(String uId,String url) {
+        UserWatchedVideo__c viewer = new UserWatchedVideo__c();
+        UserWatchedVideo__c[] viewerAlready = [select UserWhoIsWatching__r.Id from UserWatchedVideo__c];
+        for(UserWatchedVideo__c userPresent : viewerAlready){
+            if(userPresent.UserWhoIsWatching__r.Id==uId){
+                return;
+            }
+        }
+        User current = [select Name from User where Id=: uId];
+        videoToEmbed__c video = [select Id from videoToEmbed__c where video_link__c=:url];
+        viewer.UserWhoIsWatching__c = uId;
+        viewer.Name = current.Name;
+        viewer.video_watched__c = video.Id;
+        insert viewer;
+    }
+    @AuraEnabled
+    public static void updatePercentageWatched(String uId,Double percent) {
+        UserWatchedVideo__c current = [select Name,watched_Percentage__c from UserWatchedVideo__c where UserWhoIsWatching__r.Id=: uId];
+        current.watched_Percentage__c = percent;
+        update current;
+    }
+
     @AuraEnabled
     public static videoToEmbed__c createVideo(videoToEmbed__c video){
         upsert video;
