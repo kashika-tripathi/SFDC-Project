@@ -1,6 +1,13 @@
 <aura:component controller="videoGalleryController">
     <aura:attribute name="videos" type="videoToEmbed__c[]"/>
-    <aura:handler name="init" value="{!this}" action="{!c.initialiseVideos}" />
+    <aura:attribute name="categories" type="String[]" default="['','sales','developement','strategic']"/>
+    
+    
+    <lightning:select name="Categories" label="Select video category:" aura:id="onjId" value="" onchange="{!c.initialiseVideos}">
+    	<aura:iteration items="{!v.categories}" var="cat">
+        	<option value="{!cat}" text="{!cat}" />  
+    	</aura:iteration>
+	</lightning:select>
     <div class="slds-grid slds-gutters">
     <aura:iteration items="{!v.videos}" var="video">
             <div class="slds-col">
@@ -14,16 +21,16 @@
             </tr>
             <tr >
                 <lightning:recordViewForm recordId="{!video.Id}" objectApiName="videoToEmbed__c" >
-                    <tr  class="slds-row">
+                    <tr  >
                        <lightning:outputField  fieldName="video_name__c" />
                	    </tr>
-                    <tr  class="slds-row">
+                    <tr >
                        <lightning:outputField  fieldName="video_discription__c" />
                	    </tr>
-                    <tr  class="slds-row">
+                    <tr  >
                        <lightning:outputField  fieldName="video_like__c" />
                	    </tr>
-                    <tr  class="slds-row">
+                    <tr >
                        <lightning:outputField  fieldName="video_dislike__c" />
                	    </tr>
                 </lightning:recordViewForm>
