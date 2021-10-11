@@ -3,9 +3,9 @@ public with sharing class VideoFormController {
     @AuraEnabled
     public static void videoViewUserController(String uId,String url) {
         UserWatchedVideo__c viewer = new UserWatchedVideo__c();
-        UserWatchedVideo__c[] viewerAlready = [select UserWhoIsWatching__r.Id from UserWatchedVideo__c];
+        UserWatchedVideo__c[] viewerAlready = [select UserWhoIsWatching__r.Id,video_watched__r.video_link__c from UserWatchedVideo__c];
         for(UserWatchedVideo__c userPresent : viewerAlready){
-            if(userPresent.UserWhoIsWatching__r.Id==uId){
+            if(userPresent.UserWhoIsWatching__r.Id==uId && userPresent.video_watched__r.video_link__c==url){
                 return;
             }
         }
