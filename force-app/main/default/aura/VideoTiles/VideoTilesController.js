@@ -8,7 +8,9 @@
              if (state === "SUCCESS") {           
                  var allVideos = response.getReturnValue();
                  component.set("v.videos", allVideos);
-                 
+                 var cmpEvent = $A.get("e.c:selectVideo");
+                cmpEvent.setParams({"videosSelected": allVideos});
+                cmpEvent.fire();
              }                    
              else if (state === "ERROR") {
                  var errors = response.getError();
@@ -24,5 +26,6 @@
              }
          });
          $A.enqueueAction(action);
-     }
+     },
+     
 })

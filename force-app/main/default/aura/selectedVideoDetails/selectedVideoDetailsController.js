@@ -1,4 +1,15 @@
 ({
+    onVideoSelect:function(cmp,event,helper){
+        var attribute = event.getParam("videosSelected");
+        cmp.set("v.videos", attribute);
+    },
+    initialiseVideos : function(cmp,event,helper){
+        cmp.set("v.videoUrl",cmp.find("onjId").get("v.value"));
+        if(helper.pla!=10){
+            helper.pla.destroy();
+            cmp.set("v.isWatching",false);
+        }
+    },
     handleVideoWatch : function(cmp,event,helper){
         cmp.set("v.isWatching",true);
         var userId = $A.get("$SObjectType.CurrentUser.Id");

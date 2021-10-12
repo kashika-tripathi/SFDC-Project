@@ -2,10 +2,17 @@
     <ltng:require scripts="{!$Resource.widget_api}"/>
     <ltng:require scripts="{!$Resource.youTubeApi}" />
     <aura:attribute name="uId" type="String"/>
+    <aura:attribute name="videos" type="videoToEmbed__c[]" />
     <aura:attribute name="videoUrl" type="String" default=" "/>
     <aura:attribute name="liked" type="Boolean" default="false"/>
     <aura:attribute name="disLiked" type="Boolean" default="false"/>
     <aura:attribute name="isWatching" type="Boolean" default="false"/>
+    <aura:handler event="c:selectVideo" action="{!c.onVideoSelect}"/>
+    <lightning:select name="VideoToWatch" label="Video To Watch" aura:id="onjId" value="" onchange="{!c.initialiseVideos}">
+    	<aura:iteration items="{!v.videos}" var="cat">
+        	<option value="{!cat.video_link__c}" text="{!cat.video_name__c}" />  
+    	</aura:iteration>
+	</lightning:select>
     <lightning:card>
         <aura:if isTrue="{!v.isWatching == false}">
             <lightning:buttonIcon class="slds-align_absolute-center" variant="brand" iconName="utility:button_choice" title="watch Video" onclick="{! c.handleVideoWatch }" />

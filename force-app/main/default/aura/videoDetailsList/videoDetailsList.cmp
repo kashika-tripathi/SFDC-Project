@@ -57,5 +57,4 @@
             </lightning:layout>
         </div>
     </lightning:card>
-    <c:VideoTiles/>
 </aura:component>
