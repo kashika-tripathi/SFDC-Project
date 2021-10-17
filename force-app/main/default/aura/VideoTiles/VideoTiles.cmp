@@ -1,41 +1,41 @@
 <aura:component controller="videoGalleryController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
     <aura:attribute name="videos" type="videoToEmbed__c[]"/>
-    <aura:attribute name="categories" type="String[]" default="['','sales','developement','strategic']"/>
+    <aura:attribute name="categories" type="List" default="[{value:'sales', label:'sales'},{value:'developement', label:'developement'},{value:'strategic', label:'strategic'}]"/>
     
     
-    <lightning:select name="Categories" label="Select video category:" aura:id="onjId" value="" onchange="{!c.initialiseVideos}">
-    	<aura:iteration items="{!v.categories}" var="cat">
-        	<option value="{!cat}" text="{!cat}" />  
-    	</aura:iteration>
-	</lightning:select>
+    <lightning:dualListbox 
+                            	sourceLabel="Available"
+                        	    selectedLabel="Selected"
+                    	        options="{!v.categories}"
+                	            value=""
+            	                aura:Id = "fieldSelectBox"
+        	                    onchange="{!c.initialiseDualListVideos}"
+    	                        />
+    
     <lightning:card  class="slds-grid slds-wrap slds-scrollable" >
     <aura:iteration items="{!v.videos}" var="video">
-        <td class="slds-col slds-size_4-of-12  slds-p-around_small">
-        <lightning:card >
-                <tr>
-                    <tr >
+        <lightning:card class="slds-grid slds-gutters">
+                    
                         <lightning:recordViewForm recordId="{!video.Id}" objectApiName="videoToEmbed__c" >
-                            <div  >
+                            <td class="slds-col" >
                                 <label><b>video name</b></label>
                                <lightning:outputField variant="label-hidden" fieldName="video_name__c" />
-                            </div>
-                            <div >
+                            </td>
+                            <td class="slds-col">
                                 <label><b>video discription</b></label>
                                <lightning:outputField variant="label-hidden" fieldName="video_discription__c" />
-                               </div>
-                            <div>
+                            </td>
+                            <td class="slds-col">
                                 <label><b>likes</b></label>
                                <lightning:outputField variant="label-hidden" fieldName="video_like__c" />
-                               </div>
-                            <div >
+                            </td>
+                            <td class="slds-col">
                                 <label><b>dislikes</b></label>
                                <lightning:outputField variant="label-hidden" fieldName="video_dislike__c" />
-                               </div>
+                            </td>
                             </lightning:recordViewForm>
-                    </tr>
-                </tr>
+                   
         </lightning:card>
-    </td>
     </aura:iteration>
 </lightning:card>
 

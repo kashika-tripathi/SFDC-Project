@@ -1,28 +1,47 @@
 ({
+    
     onVideoSelect:function(cmp,event,helper){
         var attribute = event.getParam("videosSelected");
+        var attributeShow = event.getParam("show");
+        if(helper.pla!=10 && helper.pla!=1 && attributeShow==true && helper.pla!=2){
+            helper.pla.destroy();
+            helper.pla=2;
+        }
+        cmp.set("v.isWatching",false);
+        
         cmp.set("v.videos", attribute);
+        cmp.set("v.videoUrl","please select");
     },
     initialiseVideos : function(cmp,event,helper){
+       
         cmp.set("v.videoUrl",cmp.find("onjId").get("v.value"));
-        if(helper.pla!=10){
+        
+        if(helper.pla!=10 && helper.pla!=1 && helper.pla!=2){
             helper.pla.destroy();
+            helper.pla=1;
             cmp.set("v.isWatching",false);
+            cmp.set("v.isWatchingvideo",false);
         }
     },
     handleVideoWatch : function(cmp,event,helper){
-        cmp.set("v.isWatching",true);
+        
         var userId = $A.get("$SObjectType.CurrentUser.Id");
         cmp.set("v.uId",userId);
         var url = cmp.get("v.videoUrl");
-        var createWatchedUser = cmp.get("c.videoViewUserController");
+        if(url===" " || url==="please select"){
+            alert("please select a video to show");
+        }
+        else{
+            cmp.set("v.isWatching",true);
+            
+            var createWatchedUser = cmp.get("c.videoViewUserController");
         createWatchedUser.setParams({
             "uId": userId,
             "url": url,
         });
         $A.enqueueAction(createWatchedUser);
         url=url.split('embed/')[1];
-        //cmp.set("v.videoUrl",url);
+        
         const containerElem = cmp.find("div1").getElement();
         const playerElem = document.createElement('DIV');
         containerElem.appendChild(playerElem);
@@ -32,12 +51,16 @@
             videoId: url,
             playerVars: {'autoplay': 1,'controls': 0 }
         });
+        }
+        
         //component.set("v.play",player);
     },
     
     handleStopVideo:function(cmp,event,helper){
         helper.pla.destroy();
+        helper.pla=1;
         cmp.set("v.isWatching",false);
+        cmp.set("v.isWatchingvideo",false);
     },
     handlePlayVideo : function(cmp,event,helper){
         helper.pla.playVideo();

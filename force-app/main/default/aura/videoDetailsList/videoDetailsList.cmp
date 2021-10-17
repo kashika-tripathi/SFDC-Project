@@ -24,19 +24,23 @@
                     <lightning:input     aura:id="video"
                                         label=" Name"
                                         type="text"
-                                        value="{!v.newVideoRecord.Name}"/>
+                                        value="{!v.newVideoRecord.Name}"
+                                        required="true"/>
                     <lightning:input     aura:id="video"
                                          label="Video Name"
                                          type="text"
-                                         value="{!v.newVideoRecord.video_name__c}"/>
+                                         value="{!v.newVideoRecord.video_name__c}"
+                                         required="true"/>
                     <lightning:input     aura:id="video"
                                          label="Video Created"
                                          type="Date"
-                                         value="{!v.newVideoRecord.video_creationDate__c}"/>
+                                         value="{!v.newVideoRecord.video_creationDate__c}"
+                                         required="true"/>
                     <lightning:input     aura:id="video"
                                          label="Video Description"
                                          type="text"
-                                         value="{!v.newVideoRecord.video_discription__c}"/>
+                                         value="{!v.newVideoRecord.video_discription__c}"
+                                         required="true"/>
                                          
                     <lightning:select name="Categories" label="Select video category:" aura:id="onjId" value="{!v.newVideoRecord.video_category__c}">
     					<aura:iteration items="{!v.categories}" var="cat">
@@ -50,7 +54,8 @@
                     <lightning:input     aura:id="video"
                                         label="Video Link"
                                         type="url"
-                                        value="{!v.newVideoRecord.video_link__c}"/>
+                                        value="{!v.newVideoRecord.video_link__c}"
+                                        required="true"/>
                     
                     <lightning:button label="Create Video" onclick="{!c.handleCreateVideo}" variant="brand" class="slds-m-top_medium"/>
                 </lightning:layoutItem>

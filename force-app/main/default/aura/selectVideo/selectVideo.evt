@@ -1,3 +1,4 @@
 <aura:event type="APPLICATION">
     <aura:attribute name="videosSelected" type="videoToEmbed__c[]"/>
+    <aura:attribute name="show" type="Boolean"/>
 </aura:event>

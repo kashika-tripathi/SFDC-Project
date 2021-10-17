@@ -7,20 +7,23 @@
     <aura:attribute name="liked" type="Boolean" default="false"/>
     <aura:attribute name="disLiked" type="Boolean" default="false"/>
     <aura:attribute name="isWatching" type="Boolean" default="false"/>
+    <aura:attribute name="isWatchingvideo" type="Boolean" default="false"/>
+    
     <aura:handler event="c:selectVideo" action="{!c.onVideoSelect}"/>
     <lightning:select name="VideoToWatch" label="Video To Watch" aura:id="onjId" value="" onchange="{!c.initialiseVideos}">
-    	<aura:iteration items="{!v.videos}" var="cat">
+        <option value="please select" text="please select" /> 	
+    <aura:iteration items="{!v.videos}" var="cat">
         	<option value="{!cat.video_link__c}" text="{!cat.video_name__c}" />  
     	</aura:iteration>
 	</lightning:select>
     <lightning:card>
         <aura:if isTrue="{!v.isWatching == false}">
-            <lightning:buttonIcon class="slds-align_absolute-center" variant="brand" iconName="utility:button_choice" title="watch Video" onclick="{! c.handleVideoWatch }" />
+            <lightning:buttonIcon class="slds-align_absolute-center" variant="brand" iconName="utility:button_choice" alternativeText="watch video" title="watch Video" onclick="{! c.handleVideoWatch }" />
         </aura:if>
         <div id="myDiv" aura:id="div1">
         </div>
         
-        <aura:if isTrue="{!v.isWatching == true}">
+        <aura:if isTrue="{!v.isWatching==true}">
             <aura:if isTrue="{!v.disLiked == false}">
             <td class="slds-col">
                 <lightning:buttonIconStateful iconName="utility:like"  selected="{!v.liked}" alternativeText="Like" onclick="{! c.handleLikeToggle }"/>
